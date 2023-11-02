@@ -1,0 +1,15 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 100%;
+    } to {
+        opacity: 0;
+    }
+}

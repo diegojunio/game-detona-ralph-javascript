@@ -1,55 +1,205 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url("../images/wall.png");
+  background-repeat: repeat;
+  position: relative;
+}
+
+.container > #screen-main-menu {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-logo {
+  margin: 35px;
+  padding: 40px;
+  border: 2px solid rgb(160, 0, 0);
+  border-radius: 2.5em;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 1);
+}
+
+.game-logo img {
+  width: 250px;
+  filter: drop-shadow(0 0 40px rgba(255, 182, 114, 0.4));
+  background-clip: inherit;
+}
+
+.game-menu-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+}
+
+.game-menu-options > button {
+  font-size: 1.5em;
+  margin: 3px;
+  color: #f6e7e4;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  /* text-shadow: 5px 5px 5px rgba(0,0,0,1); */
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  border-radius: 2.5em;
+  border: 2px solid rgb(160, 0, 0);
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.game-menu-options > button:hover {
+  color: red;
+  border-color: red;
+}
+
+.container > #options-view {
+  position: absolute;
+  flex-direction: column;
+  border: 2px solid rgb(160, 0, 0);
+  border-radius: 1em;
+  width: 300px;
+  padding: 25px;
+  margin: 40px;
+  top: 25%;
+  left: 36%;
+  background-color: #ffffff;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
+}
+.container > .show {
+    animation: fadeIn;
+    animation-duration: .5s;
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-image: url('../images/wall.png');
-    background-repeat: repeat;
+}
+
+.container > .hide {
+    animation: fadeOut;
+    animation-duration: .5s;
+    display: none;
+}
+
+.container #options-view .label-options {
+  margin-bottom: 30px;
+  color: red;
+}
+
+#options-view > .options-item {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+#options-view > .options-item > button.options-ok {
+  padding: 5px;
+}
+
+#game-level-view {
+  /* display: none; */
+  flex-direction: column;
 }
 
 .menu {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 90px;
-    width: 100%;
-    background-color: #000000;
-    border-bottom: 5px solid #ffd700;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  background-color: #000000;
+  border-bottom: 5px solid #ffd900;
 }
 
 .menu-lives {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-lives > img {
-    height: 50px;
+  height: 50px;
 }
 
-
 .label {
-    color: #ff0000;
-    margin-bottom: 15px;
+  color: #ff0000;
+  margin-bottom: 15px;
 }
 
 .label-value {
-    color: white;
+  color: white;
+}
+
+.view-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .panel {
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .square {
-    height: 150px;
-    width: 150px;
-    border: 1px solid #000000;
-    background-color: #82f3b1;
+  height: 150px;
+  width: 150px;
+  border: 1px solid #000000;
+  background-color: #82f3b1;
 }
+
 .enemy {
-    background-image: url('../images/ralph.png');
-    background-size: cover;
+  background-image: url("../images/ralph.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+#game-over {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position:absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+#game-over .game-over__textblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  background-color: white;
+  width: 300px;
+  height: 180px;
+  padding: 25px;
+  border-radius: 1.5em;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
+}
+
+#game-over > .game-over__textblock > .game-over__message{
+  padding-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.game-over__score {
+  padding: 5px;
+}
+
+#game-over > .game-over__textblock > p {
+  padding: 5px;
+}
+
+#game-over > .game-over__textblock > p > span {
+  color: #ff0000;
+}
+
+#game-over > .game-over__textblock > button {
+  margin: 3px;
+  padding: 8px;
+  border-radius: 1.2em;
+  border: 2px solild #000000;
 }

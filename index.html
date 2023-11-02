@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <link rel="shortcut icon" href="src/images/favicon.jpg" type="image/x-icon" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,48 +12,91 @@
 
     <link rel="stylesheet" href="src/styles/reset.css">
     <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/animations.css">
 
     <title>Detona Ralph</title>
-    <script src="src/scripts/engine.js" defer></script>
 </head>
 
 <body>
     <main class="container">
-        <nav class="menu">
-            
-            <div class="menu-time">
-                <h2 class="label">Time left:</h2>
-                <h2 class="label-value" id="time-left">0</h2>
+        <div id="screen-main-menu" class="show">
+            <div class="game-logo">
+                <img src="/src/images/game_logo.png" alt="" srcset="">
+            </div>
+            <div class="game-menu-options">
+                <button class="main-menu_play" onclick="gamePlay();">Play</button>
+                <button class="main-menu_options" onclick="displayOptionsView('show');">Options</button>
+                <button class="main-menu_about">About</button>
+            </div>
+        </div>
+
+        <div id="options-view" class="hide">
+            <div class="label-options">
+                Options
+            </div>
+            <div class="options-item">
+                <label for="music-vol">Music Volume</label>
+                <input type="range" id="music-vol" name="music-volume" min="0" max="10" value="6">
+            </div>
+            <div class="options-item">
+                <label for="effects-vol">Effects Volume</label>
+                <input type="range" id="effects-vol" name="effects-volume" min="0" max="10" value="8">
+            </div>
+            <div class="options-item">
+                <button class="options-ok" onclick="displayOptionsView('hide')">Ok</button>
+            </div>
+        </div>
+
+        <div id="game-level-view" class="hide">
+            <nav class="menu">
+                <div class="menu-time">
+                    <h2 class="label">Time left:</h2>
+                    <h2 class="label-value" id="time-left">0</h2>
+                </div>
+
+                <div class="menu-score">
+                    <h2 class="label">Your Score:</h2>
+                    <h2 class="label-value" id="score">0</h2>
+                </div>
+                
+                <div class="menu-lives">
+                    <img src="src/images/player.png" />
+                    <h2 class="label-value" id="lives">x3</h2>
+                </div>
+            </nav>
+            <div class="view-panel">
+                <section class="panel">
+                    <div class="panel-row">
+                        <div class="square" id="1"></div>
+                        <div class="square" id="2"></div>
+                        <div class="square" id="3"></div>
+                    </div>
+                    <div class="panel-row">
+                        <div class="square" id="4"></div>
+                        <div class="square" id="5"></div>
+                        <div class="square" id="6"></div>
+                    </div>
+                    <div class="panel-row">
+                        <div class="square" id="7"></div>
+                        <div class="square" id="8"></div>
+                        <div class="square" id="9"></div>
+                    </div>
+                </section>
             </div>
 
-            <div class="menu-score">
-                <h2 class="label">Your Score:</h2>
-                <h2 class="label-value" id="score">0</h2>
+        </div>
+        <div id="game-over" class="hide">
+            <div class="game-over__textblock">
+                <p class="game-over__message">Game Over!</p>
+                <p class="game-over__score">Your score: <span id="total-score"></span></p>
+                <hr>
+                <button onclick="quitToMainMenu()">Ok</button>
             </div>
-            
-            <div class="menu-lives">
-                <img src="src/images/player.png" />
-                <h2 class="label-value" id="lives">x3</h2>
-            </div>
-        </nav>
-        <section class="panel">
-            <div class="panel-row">
-                <div class="square" id="1"></div>
-                <div class="square" id="2"></div>
-                <div class="square" id="3"></div>
-            </div>
-            <div class="panel-row">
-                <div class="square" id="4"></div>
-                <div class="square" id="5"></div>
-                <div class="square" id="6"></div>
-            </div>
-            <div class="panel-row">
-                <div class="square" id="7"></div>
-                <div class="square" id="8"></div>
-                <div class="square" id="9"></div>
-            </div>
-        </section>
+        </div>
     </main>
+    <div id="hideclick" style="display: none;" onClick="playMusicMenu()">AAAA</div>
+    <script src="src/scripts/audio_engine.js" defer></script>
+    <script src="src/scripts/engine.js" defer></script>
 </body>
 
 </html>
