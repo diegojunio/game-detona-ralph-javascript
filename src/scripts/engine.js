@@ -14,7 +14,7 @@ let gameState = {
     values: {
         lifes: 3,
         timerId: null,
-        currentTime: 60,
+        currentGameTime: 60,
         countDownTimerId: 0,
         musicVolume: setMusicVolue(),
         soundEffectsVolume: setSoundEffectsVolume(),
@@ -33,9 +33,9 @@ function displayOptionsView(display) {
 }
 
 function countDownGameTime() {
-    gameState.view.timeLeft.textContent = gameState.values.currentTime;
-    gameState.values.currentTime--;
-    if (gameState.values.currentTime == 0) {
+    gameState.view.timeLeft.textContent = gameState.values.currentGameTime;
+    gameState.values.currentGameTime--;
+    if (gameState.values.currentGameTime == 0) {
         gameOver();
     }
 }
@@ -83,12 +83,13 @@ function moveEnemy() {
 
 function gamePlay() {
     musicMenu.pause();
+    musicAction.currentTime = 0;
     musicAction.play();
     gameState.values.lifes = parseInt(3);
-    gameState.view.gameLevelView.classList.replace("hide", "show");
     gameState.values.countDownTimerId = setInterval(countDownGameTime, 1000);
-    gameState.view.timeLeft.textContent = gameState.values.currentTime;
     gameState.values.hitPosition = null;
+    gameState.view.timeLeft.textContent = gameState.values.currentG
+    gameState.view.gameLevelView.classList.replace("hide", "show");
     gameState.view.screenMainMenu.classList.replace("show", "hide");
     gameState.view.lifes.textContent = "x3"
     gameState.view.score.textContent = 0;
@@ -96,13 +97,13 @@ function gamePlay() {
 }
 
 function gameOver() {
-    gameState.values.currentTime = 60;
+    musicAction.pause();
+    gameState.values.currentGameTime = 60;
     gameState.view.lifes.textContent = "x0";
     gameState.view.timeLeft.textContent = 60;
     gameState.view.labelScore.textContent = gameState.values.totalScore;
     clearInterval(gameState.values.timerId);
     clearInterval(gameState.values.countDownTimerId);
-    musicAction.pause();
     gameState.view.gameOverView.classList.replace('hide', 'show');
 }
 
@@ -114,7 +115,7 @@ function quitToMainMenu() {
     clearInterval(gameState.values.timerId);
     clearInterval(gameState.values.countDownTimerId);
     gameState.values.totalScore = 0;
-    musicAction.currentTime = 60;
+    musicAction.currentTime = 0;
     gameState.view.gameOverView.classList.replace('show', 'hide');
     gameState.view.gameLevelView.classList.replace('show', 'hide');
     gameState.view.gameOverView.classList.replace('show', 'hide');

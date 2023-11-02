@@ -8,9 +8,10 @@
 }
 
 .container > #screen-main-menu {
-  /* display: flex; */
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vw;
 }
 
 .game-logo {
@@ -173,7 +174,7 @@
   justify-content: center;
   position: static;
   background-color: white;
-  width: 300px;
+  width: 310px;
   height: 180px;
   padding: 25px;
   border-radius: 1.5em;
@@ -181,7 +182,7 @@
 }
 
 #game-over > .game-over__textblock > .game-over__message{
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   font-size: 1.5em;
 }
 
@@ -190,11 +191,11 @@
 }
 
 #game-over > .game-over__textblock > p {
-  padding: 5px;
+  margin: 10px;
 }
 
 #game-over > .game-over__textblock > p > span {
-  color: #ff0000;
+  color: #125a00;
 }
 
 #game-over > .game-over__textblock > button {
