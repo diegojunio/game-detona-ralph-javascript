@@ -40,7 +40,6 @@ function countDownGameTime() {
     }
 }
 
-
 function randomSquare() {
     gameState.view.squares.forEach((square) => {
         square.classList.remove("enemy");
@@ -51,7 +50,6 @@ function randomSquare() {
     randomSquare.classList.add("enemy");
     gameState.values.hitPosition = randomSquare.id;
 }
-
 
 function countDownLifes() {
     gameState.values.lifes -= 1;
@@ -100,7 +98,6 @@ function gameOver() {
     musicAction.pause();
     gameState.values.currentGameTime = 60;
     gameState.view.lifes.textContent = "x0";
-    gameState.view.timeLeft.textContent = 60;
     gameState.view.labelScore.textContent = gameState.values.totalScore;
     clearInterval(gameState.values.timerId);
     clearInterval(gameState.values.countDownTimerId);
@@ -116,6 +113,7 @@ function quitToMainMenu() {
     clearInterval(gameState.values.countDownTimerId);
     gameState.values.totalScore = 0;
     musicAction.currentTime = 0;
+    gameState.view.timeLeft.textContent = 60;
     gameState.view.gameOverView.classList.replace('show', 'hide');
     gameState.view.gameLevelView.classList.replace('show', 'hide');
     gameState.view.gameOverView.classList.replace('show', 'hide');
